@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Fashion Feet</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="row mb-2">
+        <div >
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Add Product</li>
+          </ol>
+        </div>
+      </div>
+
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Add a new product</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action= "/AddData" method="POST" onsubmit = "return(validate())">
+          <div class="card-body">
+
+            <div class="form-group row">
+              <label for="productId" class="col-sm-2 col-form-label">Product ID :</label>
+              <div class="col-sm-2">
+                  <input type="number" class="form-control" id="productId" name="pid" placeholder="Enter Product ID" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="brand" class="col-sm-2 col-form-label">Product Brand :</label>
+              <div class="col-sm-2">
+                  <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter Product Brand " required>     
+              </div>
+            </div>
+
+        <div class="form-group row">
+            <label for="category" class="col-sm-2 col-form-label">Product Category :</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="category" name="category" placeholder="Enter Product Category " required>     
+            </div>
+          </div>
+
+            <div class="form-group row">
+              <label for="type" class="col-sm-2 col-form-label"> Type of the product:</label>
+              <div class="col-sm-2">
+                  <input type="text" class="form-control" id="type" name="type" placeholder="Enter Type" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="size" class="col-sm-2 col-form-label">Size :</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="size" name="size" placeholder="Enter Size " required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="stock" class="col-sm-2 col-form-label" >Stock :</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="stock" name="stock" placeholder="Enter Quantity" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="costPrice" class="col-sm-2 col-form-label">Cost Price :</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="costPrice" name="cp" placeholder="Enter cost" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="sellingPrice" class="col-sm-2 col-form-label">Selling price :</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="sellingPrice" name="sp" placeholder="Enter selling price " required>
+                </div>
+              </div>
+
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button class="btn btn-primary" id="ADD"> Add</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+
+      <script>  
+        function validate(){  
+        var id=document.myform.pid.value;  
+        var brand=document.myform.brand.value;  
+          
+        if (i<100 && i>999){  
+          alert("Invalid ip");  
+          return false;  
+        }else if(brand==""){  
+          alert("brand should be empty");  
+          return false;  
+          }  
+        }  
+        </script>  
+        <footer class="main-footer">
+          <div class="float-right d-none d-sm-block">
+            <b>Version</b> 9.0.6
+          </div>
+          <strong>Copyright &copy; 2018-2021 <a href="#">Fashion Feet</a>.</strong> All rights
+          reserved.
+        </footer>
+      
+</body>
+
+</html>
