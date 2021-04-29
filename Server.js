@@ -9,8 +9,8 @@ var s;
 MongoClient.connect('mongodb://localhost:27017/CRUD',(err,database)=>{
     if(err) return console.log(err)
     db = database.db('CRUD')
-    app.listen(5000,()=>{
-        console.log('Listening at the port number 5000')
+    app.listen(4000,()=>{
+        console.log('Listening at the port number 4000')
     })
 })
 
@@ -47,10 +47,30 @@ app.get('/',(req,res)=>{
 
 
 app.post('/AddData',(req,res)=>{
-    db.collection('Inventory').save(req.body, (err,result)=>{
+    var flag=0;
+    db.collection('Inventory').find().toArray((err,result)=>{
         if(err) return console.log(err)
-        res.redirect('/')
+        for(var i=0;i<result.length;i++){
+            console.log(result[i].pid+" "+req.body.pid)
+            if(result[i].pid==req.body.pid){
+                flag=1;
+                s=result[i].stock
+                break
+            }
+        }
+        if(flag!=1){
+            db.collection('Inventory').save(req.body, (err,result)=>{
+                if(err) return console.log(err)
+                res.redirect('/')
+            })
+        }
+        else{
+            console.log("Invalid Product Id")
+        }
     })
+
+
+    
 })
 
 app.post('/update',(req,res)=>{
@@ -67,7 +87,7 @@ app.post('/update',(req,res)=>{
             $set: {stock: parseInt(s)+parseInt(req.body.stock)}},{sort :{pid:-1}},
             (err,result)=>{
                 if(err) return res.send(err)
-                console.log(req.body.pid+' stock updated')
+                //console.log(req.body.pid+' stock updated')
                 res.redirect('/')
             })
     })
@@ -75,8 +95,8 @@ app.post('/update',(req,res)=>{
 
 app.post('/delete',(req,res)=>{
     db.collection('Inventory').findOneAndDelete({pid:req.body.pid},(err,result)=>{
-        console.log(req.body)
-        console.log(req.body.pid)
+        //console.log(req.body)
+        //console.log(req.body.pid)
         if(err) return console.log(err)
         res.redirect('/')
     })
